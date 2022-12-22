@@ -6,7 +6,7 @@ const Pokedex = () => {
   const router = useRouter();
   const pokemonId = router.query.pokemonId;
   const [pokemonData, setPokemonData] = useState(null);
-  const [routeId, setRouteId] = useState(1);
+  const [routeId, setRouteId] = useState(null);
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -105,16 +105,9 @@ const Pokedex = () => {
     }
   };
 
-  const searchRouting = () => {
-    const pokemonRoute = () => {
-      window.location.replace(`http://localhost:3000/pokedex/${routeId}`);
-    };
-
-    return (
-      <form onSubmit={() => setRouteId() && pokemonRoute()}>
-        <input type="number" max="905" placeholder="Search Pokédex #" />
-      </form>
-    );
+  const pokemonRoute = (e) => {
+    e.preventDefault();
+    router.push(`/pokedex/${routeId}`);
   };
 
   return (
@@ -151,7 +144,16 @@ const Pokedex = () => {
               905
             </a>
           </p>
-          {searchRouting()}
+          <form onSubmit={(e) => pokemonRoute(e)}>
+            <input
+              type="number"
+              max="905"
+              value={routeId}
+              onChange={(e) => setRouteId(e.target.value)}
+              placeholder="Search Pokédex #"
+            />{" "}
+            <button type="submit"> Search </button>
+          </form>
         </div>
         <div className="pokedex-info">
           <p>
