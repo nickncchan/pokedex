@@ -158,7 +158,9 @@ const Pokedex = () => {
         </div>
         <div className="pokedex-info">
           <p>
-            <u>Name:</u>{" "}
+            <a href="https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_name">
+              <u>Name:</u>
+            </a>{" "}
             <a
               href={`https://bulbapedia.bulbagarden.net/wiki/${pokemonName()}`}
             >
