@@ -147,6 +147,7 @@ const Pokedex = () => {
           <form onSubmit={(e) => pokemonRoute(e)}>
             <input
               type="number"
+              min="1"
               max="905"
               value={routeId}
               onChange={(e) => setRouteId(e.target.value)}
